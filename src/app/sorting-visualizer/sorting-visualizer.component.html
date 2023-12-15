@@ -1,0 +1,36 @@
+<div id="header" class="header">
+    <h1 id="title">Sorting Algorithm Visualizer</h1>
+    <button class="button" (click)="initializeArray(size)">
+        New Array
+    </button>
+    <button class="button" (click)="bubbleSort()">
+        Bubble Sort
+    </button>
+    <button class="button" (click)="selectionSort()">
+        Selection Sort
+    </button>
+    <button class="button" (click)="insertionSort()">
+        Insertion Sort
+    </button>
+    <button class="button" (click)="mergeSort()">
+        Merge Sort
+    </button>
+
+    <div class="sliderContainer">
+        <label for="sizeSlider" class="sliderLabel">Size</label>
+        <input id="sizeSlider" #sizeSlider class="slider" (change)="sizeChange(sizeSlider.value)" type="range" min="1" max="1000" value="{{size}}">
+    </div>
+    <div class="sliderContainer">
+        <label for="speedSlider" class="sliderLabel">Speed</label>
+        <input id="speedSlider" #speedSlider class="slider" (change)="speedChange(speedSlider.value)" type="range" min="300" max="{{maxSpeed}}" value="{{maxSpeed}}">
+    </div>
+    <p class="sliderLabel">Sound</p>
+    <label class="switch" for="checkbox">
+        <input id="checkbox" type="checkbox" (change)="volumeChange()">
+        <span class="slider round"></span>
+    </label>
+</div>
+
+<div id="arrayContainer" class="arrayContainer">
+    <div *ngFor="let value of numberArray" [ngStyle]="{'background-color': value.color == false ? 'aquamarine' : 'red' }" class="number" [style.height.px]="value.number" [style.width.vw]="100 / size"></div> 
+</div>

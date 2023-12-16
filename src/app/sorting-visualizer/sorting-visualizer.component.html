@@ -1,6 +1,6 @@
 <div id="header" class="header">
     <h1 id="title">Sorting Algorithm Visualizer</h1>
-    <button class="button" (click)="initializeArray(size)">
+    <button class="button new-array" (click)="initializeArray(size)">
         New Array
     </button>
     <button class="button" (click)="bubbleSort()">
@@ -18,7 +18,7 @@
 
     <div class="sliderContainer">
         <label for="sizeSlider" class="sliderLabel">Size</label>
-        <input id="sizeSlider" #sizeSlider class="slider" (change)="sizeChange(sizeSlider.value)" type="range" min="1" max="1000" value="{{size}}">
+        <input id="sizeSlider" #sizeSlider class="slider" (change)="sizeChange(sizeSlider.value)" type="range" min="1" max="{{maxSize}}" value="{{size}}">
     </div>
     <div class="sliderContainer">
         <label for="speedSlider" class="sliderLabel">Speed</label>

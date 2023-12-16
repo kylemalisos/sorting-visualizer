@@ -45,7 +45,7 @@
     border-radius: 8px;
     border-style: none;
     box-sizing: border-box;
-    color: #FFFFFF;
+    color: #fff0db;
     cursor: pointer;
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.5vh;
@@ -68,6 +68,15 @@
 .button:hover,
 .button:focus {
     background-color: #F082AC;
+
+    &.new-array {
+        background-color: #F8D6A5;
+    }
+}
+
+.new-array {
+    color: #EA4C89;
+    background-color: #fff0db;
 }
 
 .switch {

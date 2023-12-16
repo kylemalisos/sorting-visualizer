@@ -16,7 +16,8 @@ export class SortingVisualizerComponent implements OnInit {
   volume: boolean = false;
   numberArray: Value[] = [];
   numberCeiling: number = 0;
-  maxSpeed = 1000;
+  maxSpeed: number = 1000;
+  maxSize: number = 300;
 
   size: number = 100;
   speed: number = 10;
@@ -227,9 +228,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   volumeChange() {
+    this.makeTone(0);
     this.volume = !this.volume
-    // this.makeTone(0);
-    // const now = Tone.now();
-    // this.synth.triggerAttackRelease(0, now + 1);
   }
 }

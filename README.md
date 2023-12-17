@@ -1,5 +1,7 @@
 # SortingVisualizer
 
+This is a project created by kyle malisos to demonstrate different sorting algorithms in a visual and audio medium. This also allows one to change the speed and size of the sorting algorithms along with toggling audio. This is completely responsive and should view well on any screen ratio and format.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
 
 ## Development server

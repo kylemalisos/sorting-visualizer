@@ -66,6 +66,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   async bubbleSort() {
+    Tone.start();
     let tempArray: Value[] = this.numberArray;
     let swapped: boolean = true;
 
@@ -90,6 +91,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   async selectionSort() {
+    Tone.start();
     let tempArray: Value[] = this.numberArray;
 
     for (let i = 0; i < tempArray.length; i++) {
@@ -118,6 +120,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   async insertionSort() {
+    Tone.start();
     let tempArray: Value[] = this.numberArray;
 
     for (let i = 1; i < tempArray.length; i++) {
@@ -141,6 +144,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   async mergeSort() {
+    Tone.start();
     const tempArray: Value[] = await this.mergeRecursive(this.numberArray, 0, this.numberArray.length - 1);
 
     this.numberArray = tempArray;

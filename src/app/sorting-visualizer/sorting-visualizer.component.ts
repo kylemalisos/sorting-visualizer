@@ -243,6 +243,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   volumeChange() {
+    Tone.start();
     this.makeTone(0);
     this.volume = !this.volume
   }

@@ -5,6 +5,27 @@
     background-color: #fff0db;
 }
 
+.number {
+    margin: 0 1px;
+    background-color: aquamarine;
+}
+
+.chillSlow {
+    animation: changeColor 5s linear infinite;
+}
+
+.chillFast {
+    animation: changeColor 3s linear infinite;
+}
+
+@keyframes changeColor {
+    0%,100% {background-color: #134074;}
+    20% {background-color: #0496ff;}
+    40% {background-color: #ffbc42;}
+    60% {background-color: #d81159;}
+    80% {background-color: #8f2d56;}
+}
+
 .header {
     display: flex;
     flex-wrap: wrap;
@@ -23,8 +44,8 @@
     }
 }
 
-.number {
-    margin: 0 1px;
+.hide {
+    display: none;
 }
 
 .sliderContainer {
@@ -81,13 +102,6 @@
     background-color: #fff0db;
 }
 
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
 .switch input { 
     opacity: 0;
     width: 0;
@@ -95,6 +109,11 @@
 }
 
 .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+
     .slider {
         position: absolute;
         cursor: pointer;

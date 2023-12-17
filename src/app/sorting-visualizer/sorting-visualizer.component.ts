@@ -13,8 +13,10 @@ interface Value {
 })
 export class SortingVisualizerComponent implements OnInit {
   synth = new Tone.Synth().toDestination();
+  chill: boolean = false;
   volume: boolean = false;
   numberArray: Value[] = [];
+  headerHeight: number = 0;
   numberCeiling: number = 0;
   maxSpeed: number = 1000;
   maxSize: number = 300;
@@ -28,24 +30,33 @@ export class SortingVisualizerComponent implements OnInit {
     this.initializeArray(this.size);
   }
 
+  @HostListener('window:keydown.Space', ['$event'])
+  onSpace(event: KeyboardEvent) {
+    this.toggleCoolBeatsToRelaxAndStudyTo();
+  }
+
   // constructor() { }
 
   ngOnInit(): void {
+    this.initializeHeaderHeight();
     this.getCeiling();
     this.initializeArray(this.size);
     this.synth.volume.value = -20;
   }
 
-  getCeiling() {
-    const windowHeight = window.innerHeight;
+  initializeHeaderHeight() {
     const header = document.getElementById('header');
-    let headerHeight = 0;
 
     if (header) {
-      headerHeight = header.clientHeight;
+      this.headerHeight = header.clientHeight;
     }
+  }
 
-    this.numberCeiling = windowHeight - headerHeight;
+  getCeiling() {
+    const windowHeight = window.innerHeight;
+
+    if (!this.chill) this.numberCeiling = windowHeight - this.headerHeight;
+    else this.numberCeiling = windowHeight;
     const arrayContainer = document.getElementById('arrayContainer');
     if (arrayContainer) {
       arrayContainer.style.height = this.numberCeiling.toString() + "px";
@@ -234,5 +245,44 @@ export class SortingVisualizerComponent implements OnInit {
   volumeChange() {
     this.makeTone(0);
     this.volume = !this.volume
+  }
+
+  toggleCoolBeatsToRelaxAndStudyTo() {
+    this.chill = !this.chill;
+    this.getCeiling();
+    this.initializeArray(this.size);
+
+    if (this.chill) this.coolBeatsToRelaxAndStudyTo();
+  }
+
+  async coolBeatsToRelaxAndStudyTo() {
+    while (this.chill) {
+      let sortType = Math.floor((Math.random() * 4));
+
+      switch(sortType) {
+        case 0: {
+          await this.bubbleSort();
+          break;
+        }
+        case 1: {
+          await this.selectionSort();
+          break;
+        }
+        case 2: {
+          await this.insertionSort();
+          break;
+        }
+        case 3: {
+          await this.mergeSort();
+          break;
+        }
+        default: {
+          await this.mergeSort();
+          break;
+        }
+      }
+      await this.sleep(1000)
+      this.initializeArray(this.size);
+    }
   }
 }

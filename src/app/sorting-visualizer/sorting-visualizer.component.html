@@ -1,5 +1,5 @@
-<div id="header" class="header">
-    <h1 id="title">Sorting Algorithm Visualizer</h1>
+<div id="header" class="header" [ngClass]="{'hide': chill}">
+    <h1 id="title" (click)="toggleCoolBeatsToRelaxAndStudyTo()">Sorting Algorithm Visualizer</h1>
     <button class="button new-array" (click)="initializeArray(size)">
         New Array
     </button>
@@ -31,6 +31,6 @@
     </label>
 </div>
 
-<div id="arrayContainer" class="arrayContainer">
-    <div *ngFor="let value of numberArray" [ngStyle]="{'background-color': value.color == false ? 'aquamarine' : 'red' }" class="number" [style.height.px]="value.number" [style.width.vw]="100 / size"></div> 
+<div id="arrayContainer" [ngClass]="{'chillSlow': chill}" class="arrayContainer">
+    <div *ngFor="let value of numberArray" [ngStyle]="{'background-color': value.color == false ? 'aquamarine' : 'red' }" [ngClass]="{'chillFast': chill}" class="number" [style.height.px]="value.number" [style.width.vw]="100 / size"></div> 
 </div>

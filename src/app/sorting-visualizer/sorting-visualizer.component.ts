@@ -32,7 +32,7 @@ export class SortingVisualizerComponent implements OnInit {
 
   @HostListener('window:keydown.Space', ['$event'])
   onSpace(event: KeyboardEvent) {
-    this.toggleCoolBeatsToRelaxAndStudyTo();
+    this.toggleCoolBeatsToRelaxAndStudyTo(false);
   }
 
   // constructor() { }
@@ -248,12 +248,20 @@ export class SortingVisualizerComponent implements OnInit {
     this.volume = !this.volume
   }
 
-  toggleCoolBeatsToRelaxAndStudyTo() {
+  toggleCoolBeatsToRelaxAndStudyTo(merge: boolean) {
     this.chill = !this.chill;
     this.getCeiling();
     this.initializeArray(this.size);
 
-    if (this.chill) this.coolBeatsToRelaxAndStudyTo();
+    if (this.chill) merge ? this.coolBeatsToRelaxAndStudyToMerge() : this.coolBeatsToRelaxAndStudyTo();
+  }
+
+  async coolBeatsToRelaxAndStudyToMerge() {
+    while (this.chill) { 
+      await this.mergeSort();
+      await this.sleep(1000)
+      this.initializeArray(this.size);
+    }
   }
 
   async coolBeatsToRelaxAndStudyTo() {

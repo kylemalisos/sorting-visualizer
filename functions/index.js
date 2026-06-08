@@ -3,7 +3,7 @@ const { google } = require("googleapis");
 
 const PROJECT_ID = "minecraft-server-454402";
 const ZONE = "us-central1-f";
-const INSTANCE = "instance-20250321-020840";
+const INSTANCE = "minecraft-server";
 
 async function getComputeClient() {
     const auth = new google.auth.GoogleAuth({

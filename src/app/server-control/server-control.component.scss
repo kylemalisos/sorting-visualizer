@@ -1,0 +1,125 @@
+.server-control {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+
+  .header {
+    margin-bottom: 2rem;
+    .logo { font-size: 3rem; margin-bottom: 0.5rem; }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0; color: #1a1a1a; }
+  }
+
+  .status-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    border: 1.5px solid transparent;
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    &.running {
+      background: #e6f9f0;
+      border-color: #34c77a;
+      color: #1a7a47;
+      .status-dot { background: #34c77a; box-shadow: 0 0 6px #34c77a88; }
+    }
+    &.terminated {
+      background: #f5f5f5;
+      border-color: #ccc;
+      color: #666;
+      .status-dot { background: #aaa; }
+    }
+    &.staging, &.stopping {
+      background: #fff8e6;
+      border-color: #f5a623;
+      color: #a06800;
+      .status-dot { background: #f5a623; animation: pulse 1s infinite; }
+    }
+    &.unknown, &.loading {
+      background: #f5f5f5;
+      border-color: #ddd;
+      color: #888;
+      .status-dot { background: #ccc; }
+    }
+  }
+
+  .ip-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 4px;
+    .ip-label {
+      font-size: 0.75rem;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .ip-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      font-family: monospace;
+      color: #1a1a1a;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+
+    .btn {
+      padding: 0.65rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s, transform 0.1s;
+
+      &:disabled { opacity: 0.4; cursor: not-allowed; }
+      &:not(:disabled):active { transform: scale(0.97); }
+
+      &.btn-start {
+        background: #2d9e5f;
+        color: white;
+        &:not(:disabled):hover { background: #238050; }
+      }
+
+      &.btn-stop {
+        background: #e84444;
+        color: white;
+        &:not(:disabled):hover { background: #c43333; }
+      }
+    }
+  }
+
+  .message {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .hint {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 1rem;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

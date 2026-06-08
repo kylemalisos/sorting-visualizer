@@ -1,0 +1,35 @@
+<div class="server-control">
+  <div class="header">
+    <div class="logo">⛏️</div>
+    <h1>Server Control</h1>
+  </div>
+
+  <div class="status-card" [ngClass]="status.toLowerCase()">
+    <div class="status-dot"></div>
+    <span class="status-label">{{ statusLabel }}</span>
+  </div>
+
+  <div class="ip-display" *ngIf="isRunning && ip">
+    <span class="ip-label">Server IP</span>
+    <span class="ip-value">{{ ip }}</span>
+  </div>
+
+  <div class="actions">
+    <button
+      class="btn btn-start"
+      [disabled]="isRunning || isTransitioning || actionInProgress"
+      (click)="startServer()">
+      ▶ Start Server
+    </button>
+    <button
+      class="btn btn-stop"
+      [disabled]="isStopped || isTransitioning || actionInProgress"
+      (click)="stopServer()">
+      ■ Stop Server
+    </button>
+  </div>
+
+  <p class="message" *ngIf="message">{{ message }}</p>
+
+  <p class="hint">Status refreshes every 10 seconds. After starting, wait ~30–60s before connecting.</p>
+</div>

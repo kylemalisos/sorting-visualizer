@@ -32,7 +32,7 @@ export class SortingVisualizerComponent implements OnInit {
 
   @HostListener('window:keydown.Space', ['$event'])
   onSpace(event: KeyboardEvent) {
-    this.toggleCoolBeatsToRelaxAndStudyTo(false);
+    this.toggleCoolBeatsToRelaxAndStudyTo(0);
   }
 
   // constructor() { }
@@ -248,20 +248,13 @@ export class SortingVisualizerComponent implements OnInit {
     this.volume = !this.volume
   }
 
-  toggleCoolBeatsToRelaxAndStudyTo(merge: boolean) {
+  toggleCoolBeatsToRelaxAndStudyTo(type: number) {
     this.chill = !this.chill;
     this.getCeiling();
     this.initializeArray(this.size);
 
-    if (this.chill) merge ? this.coolBeatsToRelaxAndStudyToMerge() : this.coolBeatsToRelaxAndStudyTo();
-  }
-
-  async coolBeatsToRelaxAndStudyToMerge() {
-    while (this.chill) { 
-      await this.mergeSort();
-      await this.sleep(1000)
-      this.initializeArray(this.size);
-    }
+    if (this.chill) type == 0 ? this.coolBeatsToRelaxAndStudyTo() : 
+      type == 1 ? this.coolBeatsToRelaxAndStudyToMerge() : this.coolBeatsToRelaxAndStudyToMix();
   }
 
   async coolBeatsToRelaxAndStudyTo() {
@@ -293,5 +286,48 @@ export class SortingVisualizerComponent implements OnInit {
       await this.sleep(1000)
       this.initializeArray(this.size);
     }
+  }
+
+  async coolBeatsToRelaxAndStudyToMerge() {
+    while (this.chill) { 
+      await this.mergeSort();
+      await this.sleep(1000)
+      this.initializeArray(this.size);
+    }
+  }
+
+  async coolBeatsToRelaxAndStudyToMix() {
+    while (this.chill) {
+      let sortType = Math.floor((Math.random() * 4));
+      let tempSize = Math.floor((Math.random() * 300) + 1);
+      this.initializeArray(tempSize);
+      this.speed = Math.floor((Math.random() * 1000) + 1);
+
+      switch(sortType) {
+        case 0: {
+          await this.bubbleSort();
+          break;
+        }
+        case 1: {
+          await this.selectionSort();
+          break;
+        }
+        case 2: {
+          await this.insertionSort();
+          break;
+        }
+        case 3: {
+          await this.mergeSort();
+          break;
+        }
+        default: {
+          await this.mergeSort();
+          break;
+        }
+      }
+      await this.sleep(1000)
+      this.initializeArray(this.size);
+    }
+    this.speed = this.maxSpeed;
   }
 }

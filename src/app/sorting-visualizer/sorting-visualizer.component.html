@@ -1,6 +1,7 @@
 <div id="header" class="header" [ngClass]="{'hide': chill}">
-    <h1 (click)="toggleCoolBeatsToRelaxAndStudyTo(true)">Sorting </h1>
-    <h1 id="title" (click)="toggleCoolBeatsToRelaxAndStudyTo(false)">Algorithm Visualizer</h1>
+    <h1 (click)="toggleCoolBeatsToRelaxAndStudyTo(0)">Sorting </h1>
+    <h1 (click)="toggleCoolBeatsToRelaxAndStudyTo(1)">Algorithm</h1>
+    <h1 id="title" (click)="toggleCoolBeatsToRelaxAndStudyTo(1)">Visualizer</h1>
     <button class="button new-array" (click)="initializeArray(size)">
         New Array
     </button>
